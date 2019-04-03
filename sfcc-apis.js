@@ -10,7 +10,7 @@ var getAuthTokenService = (username, password, callback) =>{
   var bearer= "Basic " +newBearer;
   console.log(bearer);
   request({
-    url: 'https://capgemini01-alliance-prtnr-eu06-dw.demandware.net/s/CapCafe/dw/shop/v18_3/customers/auth?client_id=e4bd2b6d-1567-475d-9eb2-b2c86a37a560' ,
+    url: 'https://capgemini01-alliance-prtnr-eu06-dw.demandware.net/s/swedishKrona/dw/shop/v18_3/customers/auth?client_id=e4bd2b6d-1567-475d-9eb2-b2c86a37a560' ,
     body: {
     "type": "credentials"
     },
@@ -48,7 +48,7 @@ var getProductDetailsService = (productName, callback) => {
 
         console.log('Getting product details API hit');
         request({
-          url: `https://capgemini01-alliance-prtnr-eu06-dw.demandware.net/s/CapCafe/dw/shop/v18_3/product_search?q=${productName}&client_id=e4bd2b6d-1567-475d-9eb2-b2c86a37a560`,
+          url: `https://capgemini01-alliance-prtnr-eu06-dw.demandware.net/s/swedishKrona/dw/shop/v18_3/product_search?q=${productName}&client_id=e4bd2b6d-1567-475d-9eb2-b2c86a37a560`,
           method: 'GET',
           headers: {
            "content-type": "application/json"
@@ -78,7 +78,7 @@ var createCartService = (authToken, callback) => {
 
   console.log('Create cart API hit');
   request({
-    url: `https://capgemini01-alliance-prtnr-eu06-dw.demandware.net/s/CapCafe/dw/shop/v18_3/baskets`,
+    url: `https://capgemini01-alliance-prtnr-eu06-dw.demandware.net/s/swedishKrona/dw/shop/v18_3/baskets`,
     method: 'POST',
     headers: {
         "content-type": "application/json",
@@ -112,7 +112,7 @@ var addProductsToCart = (authToken, product_id, basket_id, callback) => {
   console.log('Add products API entered');
   var qty = 1.00;
   request({
-    url: `https://capgemini01-alliance-prtnr-eu06-dw.demandware.net/s/CapCafe/dw/shop/v18_3/baskets/${basket_id}/items`,
+    url: `https://capgemini01-alliance-prtnr-eu06-dw.demandware.net/s/swedishKrona/dw/shop/v18_3/baskets/${basket_id}/items`,
     body: [
           {
             "product_id" : product_id,
@@ -153,7 +153,7 @@ var addProductsToCart = (authToken, product_id, basket_id, callback) => {
 var getAddressService = (authToken, customer_id, callback) => {
   console.log('Get address API hit');
   request({
-    url: `https://capgemini01-alliance-prtnr-eu06-dw.demandware.net/s/CapCafe/dw/shop/v18_3/customers/${customer_id}/addresses`,
+    url: `https://capgemini01-alliance-prtnr-eu06-dw.demandware.net/s/swedishKrona/dw/shop/v18_3/customers/${customer_id}/addresses`,
     method: 'GET',
     headers: {
           "authorization": `Bearer ${authToken}`
@@ -182,7 +182,7 @@ var setShipmentService = (authToken, customer_address_id, basket_id, callback) =
 
   console.log('Setting shipment API hit');
   request({
-    url: `https://capgemini01-alliance-prtnr-eu06-dw.demandware.net/s/CapCafe/dw/shop/v18_3/baskets/${basket_id}/shipments/me/shipping_address?use_as_billing=true&customer_address_id=${customer_address_id}`,
+    url: `https://capgemini01-alliance-prtnr-eu06-dw.demandware.net/s/swedishKrona/dw/shop/v18_3/baskets/${basket_id}/shipments/me/shipping_address?use_as_billing=true&customer_address_id=${customer_address_id}`,
     method: 'PUT',
     headers: {
         "content-type": "application/json",
@@ -213,7 +213,7 @@ var setShipmentIdService = (authToken, basket_id, callback) => {
 
     console.log('Setting shipment id for a basket API hit');
     request({
-      url: `https://capgemini01-alliance-prtnr-eu06-dw.demandware.net/s/CapCafe/dw/shop/v18_3/baskets/${basket_id}/shipments/me/shipping_method`,
+      url: `https://capgemini01-alliance-prtnr-eu06-dw.demandware.net/s/swedishKrona/dw/shop/v18_3/baskets/${basket_id}/shipments/me/shipping_method`,
       method: 'PUT',
       headers: {
         "content-type": "application/json",
@@ -245,7 +245,7 @@ var addPaymentService = (authToken, basket_id, customerName, total, callback) =>
 
       console.log('Adding payment API hit');
       request({
-        url: `https://capgemini01-alliance-prtnr-eu06-dw.demandware.net/s/CapCafe/dw/shop/v18_3/baskets/${basket_id}/payment_instruments`,
+        url: `https://capgemini01-alliance-prtnr-eu06-dw.demandware.net/s/swedishKrona/dw/shop/v18_3/baskets/${basket_id}/payment_instruments`,
         method: 'POST',
         headers: {
           "content-type": "application/json",
@@ -286,7 +286,7 @@ var placeOrderService = (authToken, basket_id, callback) => {
 
         console.log('Placing order API hit');
         request({
-          url: `https://capgemini01-alliance-prtnr-eu06-dw.demandware.net/s/CapCafe/dw/shop/v18_3/orders`,
+          url: `https://capgemini01-alliance-prtnr-eu06-dw.demandware.net/s/swedishKrona/dw/shop/v18_3/orders`,
           method: 'POST',
           headers: {
            "content-type": "application/json",
@@ -323,7 +323,7 @@ var updatePaymentService = (authToken, order_no, payment_id, total, callback) =>
         console.log('Update payment API hit');
         //console.log(`In updating payment method ${authToken} ${payment_id} ${order_no} ${total}`);
         request({
-          url: `https://capgemini01-alliance-prtnr-eu06-dw.demandware.net/s/CapCafe/dw/shop/v18_3/orders/${order_no}/payment_instruments/${payment_id}`,
+          url: `https://capgemini01-alliance-prtnr-eu06-dw.demandware.net/s/swedishKrona/dw/shop/v18_3/orders/${order_no}/payment_instruments/${payment_id}`,
           method: 'PATCH',
           headers: {
            "Content-Type": "application/json",
