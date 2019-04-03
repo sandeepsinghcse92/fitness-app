@@ -130,6 +130,7 @@ app.post('/webhook/', (req, res) => {
 			case 'check_sign_in': {
 		 				console.log('In check_sign_in');
 		 					if(isDefined(actionName)){
+								console.log('action');
 								messageData = {
 									"data": {
 										"google": {
